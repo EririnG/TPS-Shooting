@@ -5,11 +5,13 @@ using UnityEngine;
 public class FireCtrl : MonoBehaviour
 {
     public GameObject bullet;
+    public ParticleSystem cartridge;
+    private ParticleSystem muzzleFlash;
     public Transform firePos;
 
     void Start()
     {
-        
+        muzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -24,5 +26,7 @@ public class FireCtrl : MonoBehaviour
     void Fire()
     {
         Instantiate(bullet,firePos.position,firePos.rotation);
+        cartridge.Play();
+        muzzleFlash.Play();
     }
 }
